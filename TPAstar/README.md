@@ -5,7 +5,7 @@
 4. Observation des résultats
 
 Alternative :
-Possible de lancer le programme avec les villes en commentaire : (exemple : `> python TP.py Lisbon beRlIn`)
+Possible de lancer le programme avec les villes en commentaire : (exemple : `>python TP.py Lisbon beRlIn`)
 
 
 #### Questions TP
