@@ -8,5 +8,5 @@ Alternative :
 Possible de lancer le programme avec les villes en commentaire : (exemple : `python TP.py lisbon berlin`)
 
 
-#### Question TP
+#### Questions TP
 Les réponses aux questions du TP sont dans le notebook "TP Astar.ipynb"
