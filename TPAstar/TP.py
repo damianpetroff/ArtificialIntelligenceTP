@@ -54,7 +54,7 @@ def getCityFromInput(s):
 def AStar(initialCity, destinationCity, h):
     history = []
     currentCity = None
-    frontiere = [initialCity] #frontiere
+    frontiere = [initialCity]
     initialCity.gn = 0
 
     while len(frontiere) > 0 :
@@ -99,25 +99,6 @@ def pathToString(path):
         stringPath += " -> " + city.name
     return stringPath
 
-# DEBUG
-def dumpclean(obj):
-    if type(obj) == dict:
-        for k, v in obj.items():
-            if hasattr(v, '__iter__'):
-                print(k)
-                dumpclean(v)
-            else:
-                print('%s : %s' % (k, v))
-    elif type(obj) == list:
-        for v in obj:
-            if hasattr(v, '__iter__'):
-                dumpclean(v)
-            else:
-                print(v)
-    else:
-        print(obj)
-# END DEBUG
-
 # Heuristiques
 def h0(n, B):
     '''0'''
@@ -136,22 +117,27 @@ def h4(n, B):
     return h1(n, B)+h2(n, B)
 
 if __name__ == "__main__":
-
+    import sys
+    heuristiques = [h0, h1, h2, h3, h4]
     readFiles()
 
-    print(f"Among {len(cities)} cities :")
-    dumpclean(cities)
-
     #Initial City
-    initialCity = getCityFromInput("initial")
+    if len(sys.argv) > 1:
+        initialCityName = sys.argv[1].capitalize()
+        initialCity = getCityFromName(initialCityName)
+    else:
+        initialCity = getCityFromInput("initial")
     print(f"Initial city city set to {initialCity.name} ({initialCity.x},{initialCity.y})")
 
     #Destination City
-    destinationCity = getCityFromInput("destination")
+    if len(sys.argv) > 2:
+        destinationCityName = sys.argv[2].capitalize()
+        destinationCity = getCityFromName(destinationCityName)
+    else:
+        destinationCity = getCityFromInput("destination")
     print(f"Destination city set to {destinationCity.name} ({destinationCity.x},{destinationCity.y})")
 
-    #A*
-    heuristiques = [h0, h1, h2, h3, h4]
+    #A
     i=0
     for hi in heuristiques:
         print("\nHeuristic : ", i)
